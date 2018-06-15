@@ -1,0 +1,4 @@
+.input-angular.ng-invalid.ng-dirty {
+  background: red;
+  color: white;
+}

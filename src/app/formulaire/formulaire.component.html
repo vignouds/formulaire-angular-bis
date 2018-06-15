@@ -1,0 +1,39 @@
+
+<!-- ◦ Nom ⇒ Validation: requis, commence par une majuscule
+◦ Téléphone ⇒ Validation: numéro de téléphone valide (10 chiffres)
+◦ Connaissances: composant select, Validation: Requis (les connaissances possibles sont JavaScript,
+TypeScript, Angular) -->
+
+<form (ngSubmit)="handleSubmit()" [formGroup]="userForm">
+  <div>
+    <label>Nom</label>
+    <input class="input-angular"/>
+  </div>
+  <div>
+    <label>Prénom</label>
+    <input [formControl]="prenomCtrl" [(ngModel)]="user.prenom" class="input-angular"/>
+    <div *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('required')">
+      Le champ prenom est requis
+    </div>
+  </div>
+  <div>
+    <label>Téléphone</label>
+    <input class="input-angular"/>
+  </div>
+  <div>
+    <label>Email</label>
+    <input [formControl]="emailCtrl" [(ngModel)]="user.email" class="input-angular"/>
+    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')">
+      Le champ email n'est pas valide
+    </div>
+    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')">
+      Le champ email est requis
+    </div>
+  </div>
+  <div>
+    <label>Connaissances</label>
+    <input class="input-angular"/>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Login</button>
+  <button type="reset" (click)="handleClear()">Clear</button>
+</form>
